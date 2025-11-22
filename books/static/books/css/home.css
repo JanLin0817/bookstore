@@ -1,0 +1,36 @@
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.book {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.book-header h2 {
+    margin: 0;
+    color: #667eea;
+}
+
+.book p {
+    margin: 5px 0;
+    color: #666;
+}

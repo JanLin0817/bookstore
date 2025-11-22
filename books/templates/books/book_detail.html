@@ -1,74 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ book.title }} - Bookstore</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .detail {
-            background: white;
-            padding: 30px;
-            border-radius: 5px;
-            border-left: 4px solid #007bff;
-        }
-        h1 {
-            color: #007bff;
-            margin-top: 0;
-        }
-        .info {
-            margin: 15px 0;
-            color: #666;
-        }
-        .description {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 4px;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #6c757d;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-        .btn:hover {
-            background: #545b62;
-        }
-    </style>
-</head>
-<body>
-    {% if book %}
-    <div class="detail">
-        <h1>{{ book.title }}</h1>
-        <p class="info"><strong>Author:</strong> {{ book.author }}</p>
-        <p class="info"><strong>Year:</strong> {{ book.year }}</p>
-        <p class="info"><strong>Rating:</strong> {{ book.rating }}/5 ⭐</p>
-        
-        {% if book.description %}
-        <div class="description">
-            <strong>Description:</strong><br>
-            {{ book.description }}
-        </div>
-        {% endif %}
-        
-        <a href="{% url 'books:home' %}" class="btn">← Back to List</a>
-    </div>
-    {% else %}
-    <div class="detail">
-        <h1>Book Not Found</h1>
-        <p>Sorry, this book doesn't exist.</p>
-        <a href="{% url 'books:home' %}" class="btn">← Back to List</a>
+{% extends "books/layout.html" %}
+{% load static %}
+
+{% block title %}{{ book.title }} - Bookstore{% endblock %}
+
+{% block child_css %}
+<link rel="stylesheet" href="{% static 'books/css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if book %}
+<div class="detail">
+    <h1>{{ book.title }}</h1>
+    <p class="info"><strong>Author:</strong> {{ book.author }}</p>
+    <p class="info"><strong>Year:</strong> {{ book.year }}</p>
+    <p class="info"><strong>Rating:</strong> {{ book.rating }}/5 ⭐</p>
+    
+    {% if book.description %}
+    <div class="description">
+        <strong>Description:</strong><br><br>
+        {{ book.description }}
     </div>
     {% endif %}
-</body>
-</html>
+    
+    <a href="{% url 'books:home' %}" class="btn btn-secondary">← Back to List</a>
+</div>
+{% else %}
+<div class="detail not-found">
+    <h1>📚</h1>
+    <h2>Book Not Found</h2>
+    <p>Sorry, this book doesn't exist.</p>
+    <a href="{% url 'books:home' %}" class="btn btn-secondary">← Back to List</a>
+</div>
+{% endif %}
+{% endblock %}
