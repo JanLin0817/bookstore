@@ -1,3 +1,39 @@
+## Setting
+
+add app: `bookstore/settings.py`
+- INSTALLED_APPS: books
+- database
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'BookstoreDB',
+        'USER': 'root',
+        'PASSWORD': '',
+        'PORT': 3306,
+        'HOST': '127.0.0.1',
+    }
+}
+```
+
+## Migrate Table
+
+```bash
+# specify app name
+❯ python manage.py makemigrations books
+
+❯ python manage.py migrate
+```
+
+## Admin
+
+Create
+- `python manage.py createsuperuser`
+
+Register model to admin
+
+
+# Requirement
 Task: Bookstore Application
 1. Create new Django project called bookstore
 2. Create books app and add to installed_apps in settings.py
@@ -28,3 +64,5 @@ Task: Bookstore Application
 22. Create serializer for book
 
 23. Create urls and views to getRoutes, getBooks, and getBook by id
+
+
