@@ -22,4 +22,7 @@ app_name = "books"
 urlpatterns = [
     path("", views.home, name="home"),
     path("book/<int:book_id>/", views.book_detail, name="book_detail"),
+    path("book/add/", views.add_book, name="add_book"),
+    path("book/<int:book_id>/edit/", views.edit_book, name="edit_book"),
+    path("book/<int:book_id>/delete/", views.delete_book, name="delete_book"),
 ]

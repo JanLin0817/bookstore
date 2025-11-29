@@ -21,7 +21,8 @@
         {{ book.description }}
     </div>
     {% endif %}
-    
+    <button><a href="{% url 'books:edit_book' book.id %}">Edit</a></button>
+    <button><a href="{% url 'books:delete_book' book.id %}">Delete</a></button>
     <a href="{% url 'books:home' %}" class="btn btn-secondary">← Back to List</a>
 </div>
 {% else %}
@@ -31,5 +32,6 @@
     <p>Sorry, this book doesn't exist.</p>
     <a href="{% url 'books:home' %}" class="btn btn-secondary">← Back to List</a>
 </div>
+
 {% endif %}
 {% endblock %}

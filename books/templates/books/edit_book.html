@@ -1,0 +1,22 @@
+{% extends "books/layout.html" %}
+{% load static %}
+
+{% block title %}Add Book - Bookstore{% endblock %}
+
+{% block content %}
+<h1>Add Book</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="mb-3">
+            <br>{{ field.label_tag }}
+            <br>{{ field }}
+        </div>
+    {% endfor %}
+    <button type="submit">Save</button> <a href="{% url 'books:home' %}">← Back</a> 
+</form>
+
+
+{% endblock %}
