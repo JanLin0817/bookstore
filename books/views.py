@@ -22,7 +22,9 @@ def add_book(request):
         form = BookForm(request.POST)
         # render errors
         if form.is_valid():
-            book = form.save()
+            book = form.save(commit=False)
+            book.posted_by = str(request.user)
+            book.save()
             return redirect("/", book_id=book.id)
         return render(request, "books/add_book.html", {"form": form})
     # display empty form
