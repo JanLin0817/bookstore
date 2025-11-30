@@ -21,4 +21,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # Route root URLs to the books app
     path("", include("books.urls")),
+    path('api/', include('books.api.urls')),
 ]
