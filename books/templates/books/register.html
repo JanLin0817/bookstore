@@ -14,7 +14,11 @@
                 {{ field.help_text }}
             </div>
         </div>
-        {{ field.errors }}
+        {% if field.errors %}
+            <p>-------------------------------</p>
+            {{ field.errors }}
+            <p>-------------------------------</p>
+        {% endif %}
     {% endfor %}
     <button type="submit">Register</button>
 </form>

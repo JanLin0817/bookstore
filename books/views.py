@@ -61,6 +61,7 @@ def register_view(request):
             user = form.save()
             login(request, user)
             return redirect("books:home")
+        return render(request, "books/register.html", {"form": form})
     form = UserCreationForm()
     return render(request, "books/register.html", {"form": form})
 
@@ -72,6 +73,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             return redirect("books:home")
+        return render(request, "books/login.html", {"form": form})
     form = AuthenticationForm()
     return render(request, "books/login.html", {"form": form})
 
